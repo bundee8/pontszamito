@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang='hu'>
+<head>
+<meta charset='UTF-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1, viewport-fit=cover'>
+<meta name='apple-mobile-web-app-capable' content='yes'>
+<meta name='mobile-web-app-capable' content='yes'>
+<meta name='apple-mobile-web-app-title' content='Pontszámító'>
+<meta name='application-name' content='Pontszámító'>
+<meta name='apple-mobile-web-app-status-bar-style' content='default'>
+<meta name='theme-color' content='#F3F6F9' media='(prefers-color-scheme: light)'>
+<meta name='theme-color' content='#10182A' media='(prefers-color-scheme: dark)'>
+<meta name='format-detection' content='telephone=no'>
+<link rel='icon' type='image/png' href='data:image/png;base64,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'>
+<link rel='apple-touch-icon' href='data:image/png;base64,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'>
+<title>Tanulmányi pontszámító</title>
+<style>
+:root {
+  --paper: #F3F6F9;
+  --sheet: #FFFFFF;
+  --ink: #1B2A4A;
+  --ink-soft: #5B6A85;
+  --line: #D5DDE8;
+  --red: #C8312B;
+  --red-soft: #FBE9E7;
+  --blue: #2F5FA8;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: #10182A;
+    --sheet: #18233A;
+    --ink: #E6ECF5;
+    --ink-soft: #9AA8C2;
+    --line: #2C3A57;
+    --red: #FF6B5E;
+    --red-soft: #3A2129;
+    --blue: #7FA7E6;
+    color-scheme: dark;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: 'Avenir Next', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.45;
+}
+.wrap {
+  max-width: 640px; margin: 0 auto;
+  padding: calc(20px + env(safe-area-inset-top)) calc(16px + env(safe-area-inset-right)) calc(120px + env(safe-area-inset-bottom)) calc(16px + env(safe-area-inset-left));
+}
+html { -webkit-text-size-adjust: 100%; }
+button, select, input { -webkit-tap-highlight-color: transparent; }
+
+header h1 { font-size: 1.6rem; margin: 0 0 4px; letter-spacing: -0.01em; }
+header p { margin: 0 0 18px; color: var(--ink-soft); font-size: 0.95rem; }
+
+.total {
+  position: sticky; top: env(safe-area-inset-top); z-index: 5;
+  background: var(--sheet);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 14px 16px 12px;
+  margin-bottom: 18px;
+}
+.total-row { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; }
+.total-label { font-weight: 600; }
+.total-score {
+  font-family: 'Marker Felt', 'Comic Sans MS', 'Segoe Print', cursive;
+  color: var(--red);
+  font-size: 2.6rem;
+  line-height: 1;
+  transform: rotate(-3deg);
+}
+.total-max { color: var(--ink-soft); font-size: 0.9rem; }
+.bar { display: flex; height: 10px; border-radius: 5px; overflow: hidden; background: var(--line); margin-top: 10px; }
+.bar span { display: block; height: 100%; transition: width .3s ease; }
+.legend { display: flex; flex-wrap: wrap; gap: 4px 12px; margin-top: 8px; font-size: 0.78rem; color: var(--ink-soft); }
+.legend i { display: inline-block; width: 9px; height: 9px; border-radius: 2px; margin-right: 4px; vertical-align: middle; }
+
+.options {
+  display: flex; flex-wrap: wrap; gap: 8px; align-items: center;
+  margin-bottom: 14px; font-size: 0.9rem;
+}
+.seg { display: inline-flex; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }
+.seg button {
+  border: 0; background: var(--sheet); color: var(--ink); padding: 7px 11px; font: inherit; cursor: pointer;
+}
+.seg button[aria-pressed='true'] { background: var(--ink); color: var(--sheet); }
+
+.subject {
+  background: var(--sheet);
+  border: 1px solid var(--line);
+  border-left: 5px solid var(--c);
+  border-radius: 10px;
+  padding: 12px 14px;
+  margin-bottom: 10px;
+}
+.s-head { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+.s-name { font-weight: 700; font-size: 1.05rem; }
+.s-weight { font-size: 0.85rem; color: var(--ink-soft); display: flex; align-items: center; gap: 6px; }
+.s-weight select {
+  font: inherit; color: var(--ink); background: var(--paper); border: 1px solid var(--line); border-radius: 6px; padding: 3px 4px;
+}
+.s-input {
+  width: 100%; margin-top: 10px; padding: 10px 12px; font: inherit; font-size: 1rem;
+  color: var(--ink); background: var(--paper); border: 1px solid var(--line); border-radius: 8px;
+}
+.s-input:focus, .seg button:focus-visible, .btn:focus-visible, .s-weight select:focus {
+  outline: 2px solid var(--blue); outline-offset: 2px;
+}
+.s-input.bad { border-color: var(--red); }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; min-height: 4px; }
+.chip { font-size: 0.82rem; padding: 2px 8px; border-radius: 999px; background: var(--paper); border: 1px solid var(--line); }
+.chip.err { color: var(--red); border-color: var(--red); background: var(--red-soft); }
+.s-calc { display: flex; justify-content: space-between; align-items: baseline; margin-top: 8px; font-size: 0.9rem; color: var(--ink-soft); }
+.s-points { color: var(--red); font-weight: 700; font-size: 1.15rem; }
+.s-points.empty { color: var(--ink-soft); font-weight: 400; font-size: 0.9rem; }
+
+.actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+.btn {
+  font: inherit; font-size: 0.92rem; padding: 9px 14px; border-radius: 8px; cursor: pointer;
+  border: 1px solid var(--line); background: var(--sheet); color: var(--ink);
+}
+.btn.primary { background: var(--ink); color: var(--sheet); border-color: var(--ink); }
+.note { margin-top: 18px; font-size: 0.85rem; color: var(--ink-soft); }
+.status { font-size: 0.8rem; color: var(--ink-soft); margin-top: 8px; min-height: 1em; }
+.add-row { display: flex; gap: 8px; margin-top: 10px; }
+.add-row .s-input { margin-top: 0; flex: 1; min-width: 0; }
+.btn.add { white-space: nowrap; }
+.chip { display: inline-flex; align-items: center; gap: 4px; padding-right: 3px; }
+.del { border: 0; background: transparent; color: var(--ink-soft); font: inherit; font-size: 1rem; line-height: 1; padding: 2px 5px; border-radius: 999px; cursor: pointer; }
+.del:hover, .del:focus-visible { color: var(--red); background: var(--red-soft); outline: none; }
+.empty-hint { font-size: 0.82rem; color: var(--ink-soft); }
+.modal { position: fixed; inset: 0; z-index: 20; display: none; align-items: center; justify-content: center; padding: 20px; background: rgba(10,16,30,.55); }
+.modal.open { display: flex; }
+.modal-box { background: var(--sheet); color: var(--ink); border: 1px solid var(--line); border-radius: 14px; padding: 18px 16px 14px; max-width: 360px; width: 100%; }
+.modal-box p { margin: 0 0 14px; }
+.modal-btns { display: flex; justify-content: flex-end; gap: 8px; }
+.btn.danger { background: var(--red); color: #fff; border-color: var(--red); }
+@media (prefers-reduced-motion: reduce) { .bar span { transition: none; } }
+</style>
+</head>
+<body>
+<div class='wrap'>
+  <header>
+    <h1>Tanulmányi pontszámító</h1>
+    <p>Tárgyanként add hozzá az új dolgozatok százalékát. A korábban rögzített eredményeket megjegyzi, a pontszám azonnal frissül.</p>
+  </header>
+
+  <section class='total' aria-live='polite'>
+    <div class='total-row'>
+      <span class='total-label'>Tanulmányi eredményből származó pont</span>
+      <span class='total-score' id='total'>0</span>
+    </div>
+    <div class='total-max' id='totalMax'>Elérhető maximum: 90 pont</div>
+    <div class='bar' id='bar'></div>
+    <div class='legend' id='legend'></div>
+  </section>
+
+  <div class='options'>
+    <span>Átlag számítása:</span>
+    <div class='seg' role='group' aria-label='Átlag kerekítése'>
+      <button type='button' id='modeExact' aria-pressed='true'>Pontos</button>
+      <button type='button' id='modeRound' aria-pressed='false'>Egész %-ra kerekítve</button>
+    </div>
+  </div>
+
+  <div id='subjects'></div>
+
+  <div class='actions'>
+    <button type='button' class='btn primary' id='example'>Diabeli példa betöltése</button>
+    <button type='button' class='btn' id='clear'>Összes törlése</button>
+    <button type='button' class='btn' id='exportBtn'>Mentés fájlba</button>
+    <button type='button' class='btn' id='importBtn'>Visszatöltés fájlból</button>
+    <button type='button' class='btn' id='shareBtn'>Megosztás másokkal</button>
+    <input type='file' id='importFile' accept='.json,application/json' hidden>
+  </div>
+  <div class='status' id='status'></div>
+
+  <div class='modal' id='modal' role='dialog' aria-modal='true' aria-labelledby='modalText'>
+    <div class='modal-box'>
+      <p id='modalText'></p>
+      <div class='modal-btns'>
+        <button type='button' class='btn' id='modalNo'>Mégse</button>
+        <button type='button' class='btn danger' id='modalYes'>Igen</button>
+      </div>
+    </div>
+  </div>
+
+  <p class='note'>Képlet tárgyanként: a százalékok átlagának tized része, szorozva a tárgy szorzójával. Matematika és Olvasás 2-szeres, Nyelvtan és Környezetismeret 1,5-szeres, Német és Hittan 1-szeres. Egyszerre több eredmény is hozzáadható vesszővel elválasztva, tizedes értéket ponttal írj (pl. 92.5). Elírt jegyet a mellette lévő × gombbal törölhetsz. Az adatok csak ezen az eszközön, ebben a böngészőben tárolódnak, senki máshoz nem jutnak el. Telefonváltáshoz használd a Mentés fájlba gombot.</p>
+  <p class='note'><b>Főképernyőre tétel:</b> iPhone-on Safariban nyisd meg az oldalt, majd Megosztás → Főképernyőhöz adás. Androidon Chrome-ban a ⋮ menü → Hozzáadás a kezdőképernyőhöz. Ezután külön alkalmazásként indul, és megjegyzi a rögzített jegyeket.</p>
+</div>
+
+<script>
+const SUBJECTS = [
+  { id: 'mat',  name: 'Matematika',       weight: 2,   color: '#2F5FA8' },
+  { id: 'irod', name: 'Olvasás',          weight: 2,   color: '#C8312B' },
+  { id: 'nyelv',name: 'Nyelvtan',         weight: 1.5, color: '#D98E1F' },
+  { id: 'korny',name: 'Környezetismeret', weight: 1.5, color: '#3E8E5A' },
+  { id: 'ang',  name: 'Német',            weight: 1,   color: '#7A4FB0' },
+  { id: 'hit',  name: 'Hittan',           weight: 1,   color: '#2A9BA6' }
+];
+const EXAMPLE = {
+  mat: [96, 88, 97, 91], irod: [92, 96, 91, 89], nyelv: [93, 86, 96],
+  korny: [86, 94, 98], ang: [97, 89, 96, 92], hit: [96, 98, 95]
+};
+const STORE_KEY = 'pontszamito-v2';
+const OLD_KEY = 'pontszamito-state';
+let state = { mode: 'exact', results: {}, weights: {} };
+SUBJECTS.forEach(s => { state.results[s.id] = []; state.weights[s.id] = s.weight; });
+let canSave = false;
+
+const fmt = (n, d = 2) => {
+  const r = Math.round(n * Math.pow(10, d)) / Math.pow(10, d);
+  return r.toLocaleString('hu-HU', { maximumFractionDigits: d });
+};
+const say = t => { document.getElementById('status').textContent = t; };
+
+// Saját megerősítő ablak (a böngésző confirm() ablaka főképernyős módban és beágyazva nem mindig működik)
+function ask(text) {
+  return new Promise(resolve => {
+    const m = document.getElementById('modal');
+    const yes = document.getElementById('modalYes'), no = document.getElementById('modalNo');
+    document.getElementById('modalText').textContent = text;
+    m.classList.add('open'); no.focus();
+    const done = v => { m.classList.remove('open'); yes.onclick = no.onclick = m.onclick = null; document.removeEventListener('keydown', esc); resolve(v); };
+    const esc = e => { if (e.key === 'Escape') done(false); };
+    yes.onclick = () => done(true);
+    no.onclick = () => done(false);
+    m.onclick = e => { if (e.target === m) done(false); };
+    document.addEventListener('keydown', esc);
+  });
+}
+
+function parse(text) {
+  const parts = text.split(/[\s,;]+/).map(t => t.replace('%', '').trim()).filter(Boolean);
+  const vals = [], errs = [];
+  parts.forEach(p => {
+    const v = Number(p);
+    if (!isNaN(v) && v >= 0 && v <= 100) vals.push(v); else errs.push(p);
+  });
+  return { vals, errs };
+}
+
+function calc(id) {
+  const vals = state.results[id];
+  if (!vals.length) return { avg: null, used: null, pts: 0 };
+  const avg = vals.reduce((a, b) => a + b, 0) / vals.length;
+  const used = state.mode === 'round' ? Math.round(avg) : avg;
+  return { avg, used, pts: used / 10 * state.weights[id] };
+}
+
+function addResults(id) {
+  const inp = document.querySelector(`[data-in='${id}']`);
+  const { vals, errs } = parse(inp.value);
+  inp.classList.toggle('bad', errs.length > 0);
+  if (errs.length) { say(`Nem rögzítve: ${errs.join(', ')}. 0 és 100 közötti számot írj.`); return; }
+  if (!vals.length) return;
+  state.results[id].push(...vals);
+  inp.value = '';
+  const name = SUBJECTS.find(s => s.id === id).name;
+  say(`${name}: ${vals.map(v => fmt(v, 1) + '%').join(', ')} rögzítve.`);
+  render(); save();
+}
+
+function buildSubjects() {
+  const box = document.getElementById('subjects');
+  box.innerHTML = '';
+  SUBJECTS.forEach(s => {
+    const el = document.createElement('div');
+    el.className = 'subject';
+    el.style.setProperty('--c', s.color);
+    el.innerHTML = `
+      <div class='s-head'>
+        <span class='s-name'>${s.name}</span>
+        <label class='s-weight'>szorzó
+          <select data-w='${s.id}' aria-label='${s.name} szorzója'>
+            ${[0.5,1,1.5,2,2.5,3].map(w => `<option value='${w}' ${w === state.weights[s.id] ? 'selected' : ''}>${String(w).replace('.', ',')}</option>`).join('')}
+          </select>
+        </label>
+      </div>
+      <div class='chips' id='chips-${s.id}'></div>
+      <div class='add-row'>
+        <input class='s-input' data-in='${s.id}' inputmode='decimal' autocomplete='off' enterkeyhint='done'
+          placeholder='Új eredmény, pl. 94' aria-label='${s.name} új eredménye százalékban'>
+        <button type='button' class='btn primary add' data-add='${s.id}'>Hozzáad</button>
+      </div>
+      <div class='s-calc'>
+        <span id='formula-${s.id}'>Még nincs eredmény</span>
+        <span class='s-points empty' id='pts-${s.id}'>0 pont</span>
+      </div>`;
+    box.appendChild(el);
+  });
+  box.querySelectorAll('[data-in]').forEach(inp => inp.addEventListener('keydown', e => {
+    if (e.key === 'Enter') { e.preventDefault(); addResults(e.target.dataset.in); }
+  }));
+  box.querySelectorAll('[data-add]').forEach(b => b.addEventListener('click', e => addResults(e.target.dataset.add)));
+  box.querySelectorAll('[data-w]').forEach(sel => sel.addEventListener('change', e => {
+    state.weights[e.target.dataset.w] = Number(e.target.value); render(); save();
+  }));
+  box.addEventListener('click', e => {
+    const b = e.target.closest('[data-del]');
+    if (!b) return;
+    const [id, idx] = b.dataset.del.split(':');
+    const removed = state.results[id].splice(Number(idx), 1)[0];
+    say(`${fmt(removed, 1)}% törölve.`);
+    render(); save();
+  });
+}
+
+function render() {
+  let total = 0, max = 0;
+  const bar = document.getElementById('bar');
+  const legend = document.getElementById('legend');
+  SUBJECTS.forEach(s => { max += 10 * state.weights[s.id]; });
+  bar.innerHTML = ''; legend.innerHTML = '';
+
+  SUBJECTS.forEach(s => {
+    const r = calc(s.id);
+    total += r.pts;
+    const w = state.weights[s.id];
+    document.getElementById('chips-' + s.id).innerHTML = state.results[s.id].map((v, i) =>
+      `<span class='chip'>${fmt(v, 1)}%<button type='button' class='del' data-del='${s.id}:${i}' aria-label='${fmt(v, 1)}% törlése'>×</button></span>`
+    ).join('') || `<span class='empty-hint'>Még nincs rögzített eredmény</span>`;
+
+    const f = document.getElementById('formula-' + s.id);
+    const p = document.getElementById('pts-' + s.id);
+    if (r.avg === null) {
+      f.textContent = 'Még nincs eredmény';
+      p.textContent = '0 pont'; p.classList.add('empty');
+    } else {
+      const n = state.results[s.id].length;
+      const avgTxt = state.mode === 'round' && r.used !== r.avg
+        ? `${n} jegy, átlag ${fmt(r.avg)}%, kerekítve ${fmt(r.used)}`
+        : `${n} jegy, átlag ${fmt(r.used)}%`;
+      f.textContent = `${avgTxt} / 10 × ${String(w).replace('.', ',')}`;
+      p.textContent = fmt(r.pts) + ' pont'; p.classList.remove('empty');
+    }
+    const seg = document.createElement('span');
+    seg.style.width = (max ? r.pts / max * 100 : 0) + '%';
+    seg.style.background = s.color;
+    seg.title = `${s.name}: ${fmt(r.pts)} pont`;
+    bar.appendChild(seg);
+    legend.insertAdjacentHTML('beforeend', `<span><i style='background:${s.color}'></i>${s.name} ${fmt(r.pts)}</span>`);
+  });
+
+  document.getElementById('total').textContent = fmt(total);
+  document.getElementById('totalMax').textContent = `Elérhető maximum: ${fmt(max)} pont`;
+  document.getElementById('modeExact').setAttribute('aria-pressed', state.mode === 'exact');
+  document.getElementById('modeRound').setAttribute('aria-pressed', state.mode === 'round');
+}
+
+// Tárolás: Claude alkalmazásban a beépített tárhely, sima böngészőben a böngésző saját tárhelye
+const store = {
+  kind: null,
+  init() {
+    if (window.storage) { this.kind = 'claude'; return; }
+    try {
+      const t = '__pt_test';
+      window['local' + 'Storage'].setItem(t, '1');
+      window['local' + 'Storage'].removeItem(t);
+      this.kind = 'browser';
+    } catch (e) { this.kind = null; }
+  },
+  async get(key) {
+    if (this.kind === 'claude') { const r = await window.storage.get(key, false); return r ? r.value : null; }
+    if (this.kind === 'browser') return window['local' + 'Storage'].getItem(key);
+    return null;
+  },
+  async set(key, value) {
+    if (this.kind === 'claude') return window.storage.set(key, value, false);
+    if (this.kind === 'browser') return window['local' + 'Storage'].setItem(key, value);
+  }
+};
+
+async function save() {
+  if (!store.kind) return;
+  try { await store.set(STORE_KEY, JSON.stringify(state)); }
+  catch (e) { say('A mentés most nem sikerült, a számítás ettől működik.'); }
+}
+
+async function load() {
+  store.init();
+  if (!store.kind) {
+    say('Ez a böngésző nem engedi a mentést (pl. privát mód). A számítás működik, de bezárás után az adatok elvesznek.');
+    return;
+  }
+  let saved = null;
+  try { const v = await store.get(STORE_KEY); if (v) saved = JSON.parse(v); } catch (e) {}
+  if (!saved && store.kind === 'claude') {
+    try {
+      const v = await store.get(OLD_KEY);
+      if (v) {
+        const old = JSON.parse(v);
+        saved = { mode: old.mode, weights: old.weights, results: {} };
+        Object.keys(old.inputs || {}).forEach(k => { saved.results[k] = parse(old.inputs[k] || '').vals; });
+      }
+    } catch (e) {}
+  }
+  if (saved) {
+    state.mode = saved.mode || state.mode;
+    SUBJECTS.forEach(s => {
+      if (saved.results && Array.isArray(saved.results[s.id])) state.results[s.id] = saved.results[s.id];
+      if (saved.weights && saved.weights[s.id]) state.weights[s.id] = saved.weights[s.id];
+    });
+    say('A korábban rögzített eredmények betöltve. Az új jegyeket elég hozzáadni.');
+    save();
+  }
+}
+
+// Biztonsági mentés: fájlba írás és visszatöltés, eszközváltáshoz
+async function exportData() {
+  const json = JSON.stringify(state, null, 2);
+  const blob = new Blob([json], { type: 'application/json' });
+  // Főképernyőről indítva (főleg iPhone-on) a letöltés nem működik, ott a megosztás menüt használjuk
+  const standalone = window.navigator.standalone || matchMedia('(display-mode: standalone)').matches;
+  if (standalone && navigator.canShare) {
+    try {
+      const file = new File([blob], 'pontszamito-mentes.json', { type: 'application/json' });
+      if (navigator.canShare({ files: [file] })) {
+        await navigator.share({ files: [file], title: 'Pontszámító mentés' });
+        say('Mentési fájl megosztva. Mentsd el a Fájlok közé vagy küldd el magadnak.');
+        return;
+      }
+    } catch (e) { if (e.name === 'AbortError') return; }
+  }
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'pontszamito-mentes.json';
+  document.body.appendChild(a); a.click(); a.remove();
+  setTimeout(() => URL.revokeObjectURL(a.href), 1000);
+  say('Mentési fájl letöltve.');
+}
+function importData(file) {
+  const r = new FileReader();
+  r.onload = () => {
+    try {
+      const d = JSON.parse(r.result);
+      if (!d.results) throw new Error();
+      SUBJECTS.forEach(s => {
+        if (Array.isArray(d.results[s.id])) state.results[s.id] = d.results[s.id].filter(v => typeof v === 'number' && v >= 0 && v <= 100);
+        if (d.weights && d.weights[s.id]) state.weights[s.id] = d.weights[s.id];
+      });
+      if (d.mode) state.mode = d.mode;
+      buildSubjects(); render(); save();
+      say('Mentési fájl visszatöltve.');
+    } catch (e) { say('Ez a fájl nem a pontszámító mentése. Válaszd a pontszamito-mentes.json fájlt.'); }
+  };
+  r.readAsText(file);
+}
+document.getElementById('exportBtn').onclick = exportData;
+
+// Megosztás: a megnyitott oldal linkjét küldi tovább (üres pontszámítóként nyílik meg a másiknál)
+document.getElementById('shareBtn').onclick = async () => {
+  const url = location.href.split('#')[0];
+  if (location.protocol === 'file:') {
+    say('Ez a fájl most a saját eszközödről nyílt meg. Másoknak magát a pontszamito.html fájlt küldd el, vagy töltsd fel egy weboldalra, és a linket oszd meg.');
+    return;
+  }
+  const data = { title: 'Tanulmányi pontszámító', text: 'Felvételi pontszámító a tanulmányi eredményekhez:', url };
+  try {
+    if (navigator.share) { await navigator.share(data); return; }
+  } catch (e) { if (e.name === 'AbortError') return; }
+  try { await navigator.clipboard.writeText(url); say('Link a vágólapra másolva: ' + url); }
+  catch (e) { say('Oszd meg ezt a linket: ' + url); }
+};
+document.getElementById('importBtn').onclick = () => document.getElementById('importFile').click();
+document.getElementById('importFile').onchange = e => { if (e.target.files[0]) importData(e.target.files[0]); e.target.value = ''; };
+
+document.getElementById('modeExact').onclick = () => { state.mode = 'exact'; render(); save(); };
+document.getElementById('modeRound').onclick = () => { state.mode = 'round'; render(); save(); };
+document.getElementById('example').onclick = async () => {
+  if (Object.values(state.results).some(a => a.length) && !(await ask('A példa felülírja a rögzített eredményeket. Folytatod?'))) return;
+  SUBJECTS.forEach(s => { state.results[s.id] = [...EXAMPLE[s.id]]; state.weights[s.id] = s.weight; });
+  buildSubjects(); render(); save();
+  say('Diabeli példa betöltve.');
+};
+document.getElementById('clear').onclick = async () => {
+  if (!(await ask('Biztosan törlöd az összes rögzített eredményt?'))) return;
+  SUBJECTS.forEach(s => { state.results[s.id] = []; });
+  render(); save();
+  say('Az összes eredmény törölve.');
+};
+
+(async () => { await load(); buildSubjects(); render(); })();
+</script>
+</body>
+</html>
